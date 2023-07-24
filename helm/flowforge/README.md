@@ -120,4 +120,14 @@ Enables FlowForge Telemetry
  
  ### Ingress
  - `ingress.annotations` ingress annotations (default is `{}`). This value is also applied to Editor instances created by FlowForge.
- - `ingress.className` ingress class name (default is `"""`). This value is also applied to Editor instances created by FlowForge. 
+ - `ingress.className` ingress class name (default is `"""`). This value is also applied to Editor instances created by FlowForge.
+ #### Ingress Annotations templating
+ - ingress annotations can make use of template replacement, this is usefull for establishing functionality like websockets or other customizations.
+ - the replacement properties available are: serviceName, instanceURL, instanceHost, instancePort
+ - an example of using this templating is shown below:
+   ```
+   ...
+      annotations:
+         "nginx.org/websocket-services": "{{serviceName}}"
+         ...
+   ```
